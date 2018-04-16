@@ -2,19 +2,19 @@ board = [["*", "*", "*"],
          ["*", "*", "*"],
          ["*", "*", "*"]]
 
-has_picked_letter = False
 
+# Make players choose X or O
 while True:
     pass
-    player_1 = input("Pick the letter \"X\" or \"O\"").lower()
+    player_1 = input("Pick the letter \"X\" or \"O\" ").upper()
 
-    if player_1 == "x":
-        player_2 = "o"
+    if player_1 == "X":
+        player_2 = "O"
         print("If player one is X that means player 2 is O")
         break
 
-    elif player_1 == "o":
-        player_2 = "x"
+    elif player_1 == "O":
+        player_2 = "X"
         print("If player one is O that means player 2 is X")
         break
 
@@ -23,3 +23,25 @@ while True:
 
 for i in range(3):
     print(board[i])
+
+def good(x):
+    if (x < 4):
+        return(True)
+    else:
+        return(False)
+
+player_1_turn = True;
+while True:
+
+    # Player 1's turn
+    if(player_1_turn):
+
+        player_1_collumn = int(input("Now choose what collumn your %s is on " % (player_1))) - 1
+        player_1_row = int(input("Player 1, choose what row your %s is on " % (player_1))) - 1
+
+        if(good(player_1_collumn) and good(player_1_row)):
+            board[player_1_row][player_1_collumn] = player_1
+            for i in range(3):
+                print(board[i])
+        else:
+            print("something's not quite right")
