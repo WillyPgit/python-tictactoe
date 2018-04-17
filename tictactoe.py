@@ -36,12 +36,20 @@ while True:
     # Player 1's turn
     if(player_1_turn):
 
-        player_1_collumn = int(input("Now choose what collumn your %s is on " % (player_1))) - 1
-        player_1_row = int(input("Player 1, choose what row your %s is on " % (player_1))) - 1
+        player_1_collumn = input("Now choose what collumn your %s is on " % (player_1))
+        player_1_row = input("Player 1, choose what row your %s is on " % (player_1))
 
-        if(good(player_1_collumn) and good(player_1_row)):
-            board[player_1_row][player_1_collumn] = player_1
-            for i in range(3):
-                print(board[i])
+        if player_1_collumn.isdigit() and player_1_row.isdigit():
+            player_1_collumn = int(player_1_collumn) - 1
+            player_1_row = int(player_1_row) - 1
+
+            if(good(player_1_collumn) and good(player_1_row)):
+                board[player_1_row][player_1_collumn] = player_1
+
+                for i in range(3):
+                    print(board[i])
+
+            else:
+                print("something's not quite right")
         else:
             print("something's not quite right")
